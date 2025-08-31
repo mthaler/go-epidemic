@@ -7,6 +7,10 @@ type position struct {
 	y float64
 }
 
+func newPosition(x, y float64) *position {
+	return &position{x: x, y: y}
+}
+
 func step(p position) position {
 	x := p.x
 	y := p.y
