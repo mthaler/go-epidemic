@@ -2,37 +2,23 @@ package main
 
 import (
 	"log"
-	"math/rand/v2"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
 // World represents the game state.
 type World struct {
-	randomWalk [][]position
-	number     int
-	width      int
-	height     int
+	randomWalks [][]position
+	number      int
 }
 
 // NewWorld creates a new world.
-func NewWorld(width, height int, maxInitLiveCells int) *World {
+func NewWorld(number int) *World {
 	w := &World{
-		area:   make([]bool, width*height),
-		width:  width,
-		height: height,
+		randomWalks: make([][]position, number),
+		number:      number,
 	}
-	w.init(maxInitLiveCells)
 	return w
-}
-
-// init inits world with a random state.
-func (w *World) init(maxLiveCells int) {
-	for i := 0; i < maxLiveCells; i++ {
-		x := rand.IntN(w.width)
-		y := rand.IntN(w.height)
-		w.area[y*w.width+x] = true
-	}
 }
 
 // Update game state by one tick.
