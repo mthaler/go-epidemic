@@ -9,9 +9,10 @@ import (
 
 // World represents the game state.
 type World struct {
-	area   []bool
-	width  int
-	height int
+	randomWalk [][]position
+	number     int
+	width      int
+	height     int
 }
 
 // NewWorld creates a new world.
