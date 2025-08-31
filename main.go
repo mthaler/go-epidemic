@@ -21,12 +21,16 @@ func NewWorld(number int) *World {
 	return w
 }
 
-// Update game state by one tick.
+// Update game state by one step.
 func (w *World) Update() {
-}
-
-// Draw paints current game state.
-func (w *World) Draw(pix []byte) {
+	for i := 0; i < w.number; i++ {
+		positions := w.randomWalks[i]
+		s := len(positions)
+		lastPos := positions[s-1]
+		newPosition := step(lastPos)
+		positions = append(positions, newPosition)
+		w.randomWalks[i] = positions
+	}
 }
 
 const (
