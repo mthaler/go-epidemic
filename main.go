@@ -45,7 +45,7 @@ func (w *World) Draw(pix []byte) {
 			x := int(p.x)
 			y := int(p.y)
 			// draw random walk
-			pix[x+y*screenWidth] = 0xff
+			pix[x*screenWidth+y] = 0xff
 		}
 	}
 }
