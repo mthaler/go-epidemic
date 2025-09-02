@@ -33,6 +33,23 @@ func (w *World) Update() {
 	}
 }
 
+// Draw current game state.
+func (w *World) Draw(pix []byte) {
+	for _, r := range w.randomWalks {
+		for _, p := range r {
+			// fill pixels with black
+			for i := 0; i < len(pix); i++ {
+				pix[i] = 0
+			}
+
+			x := int(p.x)
+			y := int(p.y)
+			// draw random walk
+			pix[x+y*screenWidth] = 0xff
+		}
+	}
+}
+
 const (
 	screenWidth  = 320
 	screenHeight = 240
